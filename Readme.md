@@ -6,7 +6,7 @@
 plt.rcParams['font.sans-serif'] = ['Times New Roman', 'Simsun']
 ```
 
-结果并没有什么卵用，还是只能 Times，于是翻阅了以下其源码，提出以下解决方案：
+结果并没有什么卵用，还是只能 Times，于是翻阅了一下其源码，提出以下解决方案：
 
 找到文件 `_mathtext.py`，222行附近，增加一行中文字体
 ```diff
@@ -55,3 +55,5 @@ class TruetypeFonts(Fonts):
 这样一来会把默认字体找不到的符号用宋体代替，如果还找不到才渲染成框。
 
 ![demo](test.svg)
+
+最后，这只是个临时解决方案，坐等[这条PR](https://github.com/matplotlib/matplotlib/pull/20740)合并。
